@@ -5,7 +5,9 @@
  */
 package com.dhanifudin.example.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,10 +19,13 @@ public class Data {
     private static Data INSTANCE = null;
 
     private Map<String, User> users;
+    private List<Item> items;
 
     private Data() {
         this.users = new HashMap<>();
-        initUsers();
+        this.items = new ArrayList<>();
+        this.initUsers();
+        this.initItems();
     }
 
     public static Data getInstance() {
@@ -40,8 +45,19 @@ public class Data {
         users.put(user3.getUsername(), user3);
     }
 
+    public void initItems() {
+        items.add(new Item("Item 1", 1000));
+        items.add(new Item("Item 2", 2000));
+        items.add(new Item("Item 3", 3000));
+        items.add(new Item("Item 4", 4000));
+        items.add(new Item("Item 5", 5000));
+    }
+
     public Map<String, User> getUsers() {
         return users;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
 }
